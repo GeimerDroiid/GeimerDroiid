@@ -34,12 +34,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-    return <>
+    return <div className="w-screen h-screen p-common">
         <EntryFrame />
         <Display>
             <Outlet />
         </Display>
-    </>;
+    </div>;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

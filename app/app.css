@@ -30,18 +30,22 @@
 
 }
 
+:root {
+    --padding: max(20px, 4vmin);
+}
+
 *, *:before, *:after {
     box-sizing: inherit;
     -webkit-user-select: inherit;
     user-select: inherit;
     -webkit-user-drag: inherit;
     -webkit-tap-highlight-color: inherit;
-    backface-visibility: inherit
+    backface-visibility: inherit;
 }
 
 * {
     margin: 0;
-    padding: 0
+    padding: 0;
 }
 
 html {
@@ -50,21 +54,16 @@ html {
     -webkit-user-select: none;
     user-select: none;
     -webkit-user-drag: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: inherit;
-    font-size: inherit
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 a {
     color: inherit;
-    text-decoration: none
+    text-decoration: none;
 }
 
 ol, ul {
-    list-style: none
+    list-style: none;
 }
 
 html, body {
