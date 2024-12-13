@@ -1,24 +1,24 @@
 import { useEffect, type ReactNode } from "react";
 
+const togleTheme = (theme: "light" | "dark") => {
+    if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("color-theme", "light");
+    } else {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("color-theme", "dark");
+    };
+};
+
 export default function Display({ children }: { children: ReactNode }) {
 
     useEffect(() => {
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
-            document.documentElement.classList.remove('dark')
-        }
-    }, [])
-
-    const togleTheme = (theme: "light" | "dark") => {
-        if (theme === "light") {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("color-theme", "light");
-        } else {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("color-theme", "dark");
+            document.documentElement.classList.remove('dark');
         };
-    };
+    }, []);
 
     return <div className="w-full h-full bg-neutral-50 dark:bg-neutral-950 text-neutral-950 dark:text-neutral-50 transition-colors duration-100 ease-out border-[0.05px] border-neutral-950 dark:border-neutral-50 p-common">
         {children}

@@ -4,12 +4,14 @@ import {
     Meta,
     Outlet,
     Scripts,
-    ScrollRestoration,
+    ScrollRestoration
 } from "react-router";
 
 import type { Route } from "./+types/root";
 import stylesheet from "./app.css?url";
-import { Display, EntryFrame } from "./components";
+import { Display, EntryFrame, Cmd } from "./components";
+import { useState } from "react";
+import type { ext } from "./schemas/types";
 
 export const links: Route.LinksFunction = () => [
     { rel: "stylesheet", href: stylesheet },
@@ -34,10 +36,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+    const [filetype, setFileType] = useState<ext>();
+
     return <div className="w-screen h-screen p-common">
         <EntryFrame />
         <Display>
-            <Outlet />
+            <Cmd extension={filetype} />
+            <Outlet context={{ setFileType }} />
         </Display>
     </div>;
 }
